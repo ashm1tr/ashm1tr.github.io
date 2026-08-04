@@ -50,7 +50,23 @@ h1 {
   font-weight: 700;
 }
 
-.tagline { margin: 0; color: var(--dim); }
+.tagline {
+  margin: 0;
+  color: var(--dim);
+  display: flex;
+  align-items: center;
+  gap: .4em;
+}
+
+.pin {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
 
 h2 {
   margin: 2.75rem 0 .5rem;

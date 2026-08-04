@@ -15,7 +15,8 @@
       "Bash(gh repo *)",
       "Bash(git commit -qm 'Terminal aesthetic; restructure into six sections *)",
       "Bash(git push *)",
-      "Bash(git commit -qm 'Render sections as CLI commands with output blocks *)"
+      "Bash(git commit -qm 'Render sections as CLI commands with output blocks *)",
+      "Bash(curl -s \"https://ashm1tr.github.io/?cb=$$\" -H 'Cache-Control: no-cache')"
     ]
   }
 }
