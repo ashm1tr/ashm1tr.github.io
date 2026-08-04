@@ -14,7 +14,8 @@
       "Bash(gh api *)",
       "Bash(gh repo *)",
       "Bash(git commit -qm 'Terminal aesthetic; restructure into six sections *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git commit -qm 'Render sections as CLI commands with output blocks *)"
     ]
   }
 }

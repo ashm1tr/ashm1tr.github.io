@@ -11,7 +11,7 @@
 <div class="term">
 
 <header>
-  <p class="prompt"><span class="user">ashmit</span><span class="punct">@</span><span class="host">web</span><span class="punct">:~$</span> whoami</p>
+  <p class="line"><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> whoami</p>
   <h1>ashmit rao</h1>
   <p class="tagline">one-line tagline goes here</p>
 </header>
@@ -19,74 +19,81 @@
 <main>
 
   <section id="about">
-    <h2><span class="punct">##</span> about</h2>
-    <p>Placeholder. A short paragraph about who you are.</p>
+    <h2><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> cat about.txt</h2>
+    <div class="out">
+      <p>Placeholder. A short paragraph about who you are.</p>
+    </div>
   </section>
 
   <section id="currently">
-    <h2><span class="punct">##</span> currently</h2>
-    <ul>
-      <li>Placeholder — what you're working on</li>
-      <li>Placeholder — what you're learning</li>
-    </ul>
+    <h2><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> cat currently.txt</h2>
+    <div class="out">
+      <p><span class="bullet">-</span> Placeholder — what you're working on</p>
+      <p><span class="bullet">-</span> Placeholder — what you're learning</p>
+    </div>
   </section>
 
   <section id="selected-work">
-    <h2><span class="punct">##</span> selected work</h2>
-    <ul class="entries">
-      <li>
-        <span class="title">project name</span>
-        <span class="meta">2026</span>
-        <p>One line on what it is and why it mattered.</p>
-      </li>
-      <li>
-        <span class="title">project name</span>
-        <span class="meta">2025</span>
-        <p>One line on what it is and why it mattered.</p>
-      </li>
-    </ul>
+    <h2><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> ls -la ~/work</h2>
+    <div class="out">
+      <div class="row">
+        <span class="perm">drwxr-xr-x</span>
+        <span class="date">2026</span>
+        <span class="name">project-name</span>
+        <p class="desc">One line on what it is and why it mattered.</p>
+      </div>
+      <div class="row">
+        <span class="perm">drwxr-xr-x</span>
+        <span class="date">2025</span>
+        <span class="name">project-name</span>
+        <p class="desc">One line on what it is and why it mattered.</p>
+      </div>
+    </div>
   </section>
 
   <section id="experience">
-    <h2><span class="punct">##</span> experience</h2>
-    <ul class="entries">
-      <li>
-        <span class="title">role — company</span>
-        <span class="meta">2025 – present</span>
-        <p>What you did there, in a line.</p>
-      </li>
-      <li>
-        <span class="title">role — company</span>
-        <span class="meta">2024 – 2025</span>
-        <p>What you did there, in a line.</p>
-      </li>
-    </ul>
+    <h2><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> git log --oneline experience</h2>
+    <div class="out">
+      <div class="row">
+        <span class="hash">a1b2c3d</span>
+        <span class="date">2025 – present</span>
+        <span class="name">role — company</span>
+        <p class="desc">What you did there, in a line.</p>
+      </div>
+      <div class="row">
+        <span class="hash">d4e5f6a</span>
+        <span class="date">2024 – 2025</span>
+        <span class="name">role — company</span>
+        <p class="desc">What you did there, in a line.</p>
+      </div>
+    </div>
   </section>
 
   <section id="extra-curricular">
-    <h2><span class="punct">##</span> extra-curricular</h2>
-    <ul class="entries">
-      <li>
-        <span class="title">society / activity</span>
-        <span class="meta">2024 –</span>
-        <p>One line.</p>
-      </li>
-    </ul>
+    <h2><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> ls ~/extra-curricular</h2>
+    <div class="out">
+      <div class="row">
+        <span class="perm">-rw-r--r--</span>
+        <span class="date">2024 –</span>
+        <span class="name">society-activity</span>
+        <p class="desc">One line.</p>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
-    <h2><span class="punct">##</span> contact</h2>
-    <ul class="links">
-      <li><a href="mailto:ashmitrao@googlemail.com">email</a></li>
-      <li><a href="https://github.com/ashm1tr">github</a></li>
-      <li><a href="#">linkedin</a></li>
-    </ul>
+    <h2><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> cat contact.txt</h2>
+    <div class="out">
+      <p><span class="key">email</span><span class="eq">=</span><a href="mailto:ashmitrao@googlemail.com">ashmitrao@googlemail.com</a></p>
+      <p><span class="key">github</span><span class="eq">=</span><a href="https://github.com/ashm1tr">github.com/ashm1tr</a></p>
+      <p><span class="key">linkedin</span><span class="eq">=</span><a href="#">linkedin.com/in/…</a></p>
+    </div>
   </section>
 
 </main>
 
 <footer>
-  <p class="prompt"><span class="user">ashmit</span><span class="punct">@</span><span class="host">web</span><span class="punct">:~$</span> <span class="cursor"></span></p>
+  <p class="line"><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> <span class="cursor"></span></p>
 </footer>
 
 </div>
