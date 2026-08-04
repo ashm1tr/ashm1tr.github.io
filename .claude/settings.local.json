@@ -7,7 +7,14 @@
       "Bash(printf '.DS_Store\\\\n')",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit -qm 'Scaffold static personal site *)"
+      "Bash(git commit -qm 'Scaffold static personal site *)",
+      "Bash(brew list *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(brew install *)",
+      "Bash(gh api *)",
+      "Bash(gh repo *)",
+      "Bash(git commit -qm 'Terminal aesthetic; restructure into six sections *)",
+      "Bash(git push *)"
     ]
   }
 }
