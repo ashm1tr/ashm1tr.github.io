@@ -59,13 +59,11 @@ h1 {
 }
 
 .pin {
-  width: 1em;
-  height: 1em;
+  width: .8em;
+  height: .8em;
   flex: none;
-  fill: none;
-  stroke: var(--amber);
-  stroke-width: 1.8;
-  stroke-linejoin: round;
+  fill: var(--amber);
+  stroke: none;
 }
 
 h2 {
