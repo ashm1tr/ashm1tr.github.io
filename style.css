@@ -27,7 +27,10 @@ body {
   padding: 3rem 1.25rem 5rem;
   background: var(--bg);
   color: var(--fg);
-  font: 15px/1.75 ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font: 15px/1.75 "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-variant-ligatures: none;
+  font-feature-settings: "zero" 1;
+  letter-spacing: -.01em;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -44,7 +47,7 @@ body {
 h1 {
   margin: 0 0 .3rem;
   font-size: 1.45rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .tagline { margin: 0; color: var(--dim); }
@@ -70,7 +73,7 @@ h2 {
 .perm, .hash { color: var(--dim); margin-right: .9rem; }
 .hash { color: var(--amber); }
 .date { color: var(--blue); margin-right: .9rem; }
-.name { color: var(--fg); font-weight: 600; }
+.name { color: var(--fg); font-weight: 700; }
 .desc { margin: .1rem 0 0; color: var(--dim); }
 
 .key { color: var(--amber); }
