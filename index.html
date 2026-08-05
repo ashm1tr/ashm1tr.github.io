@@ -9,19 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="style.css">
-<script>
-  // applied before first paint so a pinned theme doesn't flash the other one
-  try {
-    var saved = localStorage.getItem("theme");
-    if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
-  } catch (e) {}
-</script>
 </head>
 <body>
 <div class="term">
 
 <header>
-  <p class="line line--top"><span><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> whoami</span><button type="button" class="theme-toggle" id="theme-toggle" aria-live="polite">[<span class="label">light</span>]</button></p>
+  <p class="line"><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> whoami</p>
   <h1>Ashmit Rao</h1>
   <p class="tagline"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>manchester / oxford</p>
 </header>
@@ -113,34 +106,5 @@
 
 </div>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById("theme-toggle");
-    var label = btn.querySelector(".label");
-    var osDark = window.matchMedia("(prefers-color-scheme: dark)");
-
-    function current() {
-      return root.dataset.theme || (osDark.matches ? "dark" : "light");
-    }
-
-    function sync() {
-      var next = current() === "dark" ? "light" : "dark";
-      label.textContent = next;
-      btn.setAttribute("aria-label", "switch to " + next + " mode");
-    }
-
-    btn.addEventListener("click", function () {
-      var next = current() === "dark" ? "light" : "dark";
-      root.dataset.theme = next;
-      try { localStorage.setItem("theme", next); } catch (e) {}
-      sync();
-    });
-
-    // keep the label honest if the OS flips while no theme is pinned
-    osDark.addEventListener("change", sync);
-    sync();
-  })();
-</script>
 </body>
 </html>
