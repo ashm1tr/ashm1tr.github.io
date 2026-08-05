@@ -8,8 +8,9 @@
   --rule: #232823;
 }
 
+/* light palette: follows the OS unless the toggle has pinned a theme */
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not([data-theme="dark"]) {
     --bg: #f4f3ec;
     --fg: #24291f;
     --dim: #767b6c;
@@ -18,6 +19,16 @@
     --blue: #1f4f68;
     --rule: #ddddd2;
   }
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f3ec;
+  --fg: #24291f;
+  --dim: #767b6c;
+  --accent: #26632f;
+  --amber: #745715;
+  --blue: #1f4f68;
+  --rule: #ddddd2;
 }
 
 * { box-sizing: border-box; }
@@ -43,6 +54,30 @@ body {
 .ps1 .path { color: var(--blue); }
 
 .line { margin: 0 0 .75rem; }
+
+/* theme toggle, sat on the right of the whoami prompt line */
+.line--top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.theme-toggle {
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--dim);
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--accent); }
+.theme-toggle:focus-visible { outline: 1px dashed var(--accent); outline-offset: 3px; }
+.theme-toggle .label { color: var(--fg); }
+.theme-toggle:hover .label { color: var(--accent); }
 
 h1 {
   margin: 0 0 .3rem;
