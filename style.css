@@ -70,6 +70,13 @@ h2 {
 .out > p { margin: 0 0 .2rem; }
 .bullet { color: var(--dim); margin-right: .5rem; }
 
+/* sub-heading inside an output block, e.g. "recent" under reading */
+.out > .sub {
+  margin: 1.1rem 0 .1rem;
+  color: var(--dim);
+  text-transform: lowercase;
+}
+
 .row { padding: .35rem 0; }
 .row + .row { margin-top: .35rem; }
 
