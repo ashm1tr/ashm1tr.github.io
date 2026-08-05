@@ -18,7 +18,8 @@
       "Bash(git commit -qm 'Render sections as CLI commands with output blocks *)",
       "Bash(curl -s \"https://ashm1tr.github.io/?cb=$$\" -H 'Cache-Control: no-cache')",
       "Bash(git log *)",
-      "Bash(curl -s \"https://ashm1tr.github.io/?cb=about\")"
+      "Bash(curl -s \"https://ashm1tr.github.io/?cb=about\")",
+      "Bash(git commit -q -m ' *)"
     ]
   }
 }
