@@ -80,8 +80,7 @@ h2 {
 .row { padding: .35rem 0; }
 .row + .row { margin-top: .35rem; }
 
-.perm, .hash { color: var(--dim); margin-right: .9rem; }
-.hash { color: var(--amber); }
+.hash { color: var(--amber); margin-right: .9rem; }
 .date { color: var(--blue); margin-right: .9rem; }
 .name { color: var(--fg); font-weight: 700; }
 .desc { margin: .1rem 0 0; color: var(--dim); }
@@ -116,6 +115,6 @@ footer .line { margin: 0; }
 
 @media (max-width: 34rem) {
   body { font-size: 14px; }
-  .perm, .hash { display: none; }
+  .hash { display: none; }
   .date { display: block; margin: 0; }
 }
