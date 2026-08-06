@@ -55,6 +55,37 @@ h1 {
   stroke: none;
 }
 
+/* name on the left, nav on the right, sharing one baseline */
+.titlebar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+/* page nav; grows as pages are added */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.nav a { border-bottom: 0; }
+.nav a::before { content: "./"; color: var(--dim); }
+.nav a:hover { border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+
+.nav a[aria-current="page"] {
+  color: var(--fg);
+  font-weight: 700;
+}
+.nav a[aria-current="page"]::before { content: "./"; color: var(--accent); }
+
+h1 .home {
+  color: inherit;
+  border-bottom: 0;
+}
+h1 .home:hover { color: var(--accent); }
+
 h2 {
   margin: 2.75rem 0 .5rem;
   font-size: 1rem;
@@ -68,19 +99,35 @@ h2 {
   padding-left: 1rem;
 }
 .out > p { margin: 0 0 .2rem; }
-.bullet { color: var(--dim); margin-right: .5rem; }
+/* bullets are drawn by CSS, not written into the markup */
+.item {
+  padding-left: calc(1ch + .5rem);
+  text-indent: calc(-1ch - .5rem);
+}
+.item::before {
+  content: ">";
+  color: var(--dim);
+  margin-right: .5rem;
+  font-style: normal;
+}
 
 /* sub-heading inside an output block, e.g. "recent" under reading */
 .out > .sub {
-  margin: 1.1rem 0 .1rem;
-  color: var(--dim);
+  margin: 1.4rem 0 .35rem;
+  color: var(--amber);
   text-transform: lowercase;
 }
+.out > .sub:first-child { margin-top: 0; }
+
+/* book entry: "> title" with the author indented underneath */
+.book { padding: .1rem 0; }
+.book + .book { margin-top: .45rem; }
+.book .title { margin: 0; font-style: italic; }
+.book .desc { padding-left: calc(1ch + .5rem); }
 
 .row { padding: .35rem 0; }
 .row + .row { margin-top: .35rem; }
 
-.hash { color: var(--amber); margin-right: .9rem; }
 .date { color: var(--blue); margin-right: .9rem; }
 .name { color: var(--fg); font-weight: 700; }
 .desc { margin: .1rem 0 0; color: var(--dim); }
@@ -115,6 +162,7 @@ footer .line { margin: 0; }
 
 @media (max-width: 34rem) {
   body { font-size: 14px; }
-  .hash { display: none; }
+  /* narrow screens: let the nav drop under the name rather than crush it */
+  .titlebar { flex-wrap: wrap; gap: .2rem 1rem; }
   .date { display: block; margin: 0; }
 }
