@@ -129,6 +129,8 @@ h2 {
 .row + .row { margin-top: .35rem; }
 
 .date { color: var(--blue); margin-right: .9rem; }
+/* fixed date column so the names line up despite varying date lengths */
+#extra-curricular .date { display: inline-block; width: 14ch; margin-right: .9rem; }
 .name { color: var(--fg); font-weight: 700; }
 .desc { margin: .1rem 0 0; color: var(--dim); }
 
@@ -164,5 +166,5 @@ footer .line { margin: 0; }
   body { font-size: 14px; }
   /* narrow screens: let the nav drop under the name rather than crush it */
   .titlebar { flex-wrap: wrap; gap: .2rem 1rem; }
-  .date { display: block; margin: 0; }
+  .date, #extra-curricular .date { display: block; width: auto; margin: 0; }
 }
