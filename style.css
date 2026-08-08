@@ -6,8 +6,35 @@
   --amber: #d6b25f;
   --blue: #7fb2d6;
   --rule: #232823;
-  color-scheme: dark;
+  color-scheme: light dark;
 }
+
+/* light palette: follows the OS unless the toggle has pinned a theme */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4f3ec;
+    --fg: #24291f;
+    --dim: #767b6c;
+    --accent: #2f7a3f;
+    --amber: #8a6a1c;
+    --blue: #2d6a8a;
+    --rule: #ddddd2;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f3ec;
+  --fg: #24291f;
+  --dim: #767b6c;
+  --accent: #2f7a3f;
+  --amber: #8a6a1c;
+  --blue: #2d6a8a;
+  --rule: #ddddd2;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; }
 
@@ -32,6 +59,59 @@ body {
 .ps1 .path { color: var(--blue); }
 
 .line { margin: 0 0 .75rem; }
+
+/* theme toggle, sat on the right of the prompt line above the nav */
+.line--top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.theme-toggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--dim);
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--accent); }
+.theme-toggle:focus-visible { outline: 1px dashed var(--accent); outline-offset: 3px; }
+/* rounded track with a circular knob */
+.theme-toggle .track {
+  position: relative;
+  width: 2.6em;
+  height: 1.3em;
+  flex: none;
+  border: 1px solid var(--rule);
+  border-radius: 1em;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+.theme-toggle:hover .track { border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+
+.theme-toggle .knob {
+  position: absolute;
+  top: .15em;
+  left: .15em;
+  width: .9em;
+  height: .9em;
+  border-radius: 50%;
+  background: var(--dim);
+  transition: transform .15s ease-out, background-color .15s ease-out;
+}
+.theme-toggle:hover .knob { background: var(--accent); }
+/* checked == dark: the block sits on the right, the "lights off" end */
+.theme-toggle[aria-checked="true"] .knob { transform: translateX(1.4em); }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle .knob { transition: none; }
+}
 
 h1 {
   margin: 0 0 .3rem;
