@@ -1,0 +1,34 @@
+# the site is built locally and the output committed, so the one thing that
+# can go wrong is forgetting to run the build. this rebuilds from the
+# markdown sources and fails if the result differs from what was pushed.
+name: build check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: node build.js
+
+      - name: fail if the committed output is stale
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::writing/ is out of date — run 'node build.js' and commit the result"
+            git status --porcelain
+            git --no-pager diff
+            exit 1
+          fi
+          echo "committed output matches a clean build"

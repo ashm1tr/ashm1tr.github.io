@@ -160,12 +160,6 @@ h1 {
 }
 .nav a[aria-current="page"]::before { content: "./"; color: var(--accent); }
 
-h1 .home {
-  color: inherit;
-  border-bottom: 0;
-}
-h1 .home:hover { color: var(--accent); }
-
 h2 {
   margin: 2.75rem 0 .5rem;
   font-size: 1rem;
@@ -217,6 +211,10 @@ h2 {
 .key { color: var(--amber); }
 .eq { color: var(--dim); }
 
+/* the email is spelled out as a placeholder rather than linked, to keep
+   scrapers off it — so it deliberately does not look clickable */
+.addr { color: var(--fg); }
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -247,4 +245,181 @@ footer .line { margin: 0; }
   /* narrow screens: let the nav drop under the name rather than crush it */
   .titlebar { flex-wrap: wrap; gap: .2rem 1rem; }
   .date, #extra-curricular .date { display: block; width: auto; margin: 0; }
+}
+
+/* ==========================================================================
+   writing — the post list, and long-form prose inside .out
+   ========================================================================== */
+
+/* dates in the post list are longer than the work rows, so they get a wider
+   column of their own to keep the titles aligned */
+#writing .date { display: inline-block; width: 12ch; margin-right: .9rem; }
+
+.draft-flag {
+  margin-left: .6rem;
+  color: var(--amber);
+}
+.draft-flag::before { content: "["; }
+.draft-flag::after { content: "]"; }
+
+/* date · reading time under a post title; overrides .tagline's icon layout */
+.post-meta { display: block; }
+
+/* ---- prose ------------------------------------------------------------- */
+
+/* .out is tuned for terse one-line entries, so prose re-opens the spacing */
+.out.prose > p { margin: 0 0 1rem; }
+.prose > :first-child { margin-top: 0; }
+.prose > :last-child { margin-bottom: 0; }
+
+/* subheadings wear their markdown source, the way .nav wears "./" */
+.prose h3, .prose h4 {
+  margin: 2.25rem 0 .6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+.prose h3::before { content: "## "; color: var(--dim); }
+.prose h4::before { content: "### "; color: var(--dim); }
+
+/* the "#" permalink stays out of the way until the heading is hovered */
+.prose .anchor {
+  margin-left: .6rem;
+  color: var(--dim);
+  border-bottom: 0;
+  opacity: 0;
+  transition: opacity .12s ease-out;
+}
+.prose h3:hover .anchor,
+.prose h4:hover .anchor,
+.prose .anchor:focus-visible { opacity: 1; }
+.prose .anchor:hover { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .prose .anchor { transition: none; }
+}
+
+.prose ul, .prose ol { margin: 0 0 1rem; padding-left: 1.6rem; }
+.prose li { margin: 0 0 .25rem; }
+.prose ul { list-style: none; padding-left: calc(1ch + .5rem); }
+.prose ul > li { text-indent: calc(-1ch - .5rem); }
+.prose ul > li::before { content: "-"; color: var(--dim); margin-right: .5rem; }
+.prose ol { list-style-position: outside; }
+.prose ol::marker, .prose li::marker { color: var(--dim); }
+
+.prose blockquote {
+  margin: 1.25rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+  color: var(--dim);
+}
+.prose blockquote p:last-child { margin-bottom: 0; }
+
+.prose hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.prose img { max-width: 100%; height: auto; }
+
+/* wide content must scroll inside itself rather than widen the page */
+.prose table { display: block; overflow-x: auto; border-collapse: collapse; }
+.prose th, .prose td { padding: .3rem .8rem .3rem 0; text-align: left; }
+.prose th { color: var(--amber); font-weight: 700; }
+
+/* ---- code -------------------------------------------------------------- */
+
+.prose code {
+  padding: .1em .35em;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  font-size: .92em;
+}
+
+.prose pre {
+  margin: 1.25rem 0;
+  padding: .8rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  /* the site's own tint, so blocks read as part of the page rather than
+     pasted in from the highlighter's theme */
+  background: color-mix(in srgb, var(--fg) 4%, transparent);
+  overflow-x: auto;
+  font-size: .92em;
+  line-height: 1.6;
+}
+.prose pre code { padding: 0; border-radius: 0; background: none; font-size: inherit; }
+
+/* shiki writes both palettes as css variables, so code colour follows the
+   same three theme states as the palette at the top of this file */
+.shiki, .shiki span { color: var(--shiki-dark); }
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .shiki,
+  :root:not([data-theme="dark"]) .shiki span { color: var(--shiki-light); }
+}
+:root[data-theme="light"] .shiki,
+:root[data-theme="light"] .shiki span { color: var(--shiki-light); }
+
+/* ---- maths ------------------------------------------------------------- */
+
+/* katex sets its own type scale; nudge it back toward the mono body size */
+.katex { font-size: 1.05em; }
+
+/* a long equation scrolls on its own rather than stretching the page */
+.katex-display {
+  margin: 1.25rem 0;
+  padding: .25rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.katex-block { margin: 0; }
+
+/* ---- theorem blocks ---------------------------------------------------- */
+
+.thm {
+  margin: 1.5rem 0;
+  padding: .1rem 0 .1rem 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--amber) 45%, transparent);
+}
+.thm-label {
+  margin: 0 0 .4rem;
+  color: var(--amber);
+  font-weight: 700;
+  text-transform: lowercase;
+}
+.thm > p:last-child { margin-bottom: 0; }
+
+.thm--proof { border-left-color: var(--rule); }
+.thm--proof > .thm-label { color: var(--dim); }
+/* the traditional end-of-proof box, drawn rather than typed */
+.thm--proof > :last-child::after { content: " ∎"; color: var(--dim); }
+
+/* ---- footnotes --------------------------------------------------------- */
+
+.footnote-rule { margin: 2.5rem 0 1rem; }
+.footnotes { margin: 0; padding-left: 1.6rem; color: var(--dim); font-size: .92em; }
+.footnotes li { margin: 0 0 .5rem; }
+.footnotes p { margin: 0; }
+.footnote-ref a { border-bottom: 0; }
+.footnote-backref { border-bottom: 0; margin-left: .3rem; }
+
+/* ---- previous / next --------------------------------------------------- */
+
+.postnav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: .92em;
+}
+.postnav .newer { margin-left: auto; text-align: right; }
+
+@media (max-width: 34rem) {
+  #writing .date { display: block; width: auto; margin: 0; }
+  .postnav { flex-direction: column; gap: .5rem; }
+  .postnav .newer { margin-left: 0; text-align: left; }
 }

@@ -1,2 +1,6 @@
 .DS_Store
 .claude/settings.local.json
+node_modules/
+CLAUDE.md
+# unfinished posts stay local; `node build.js --drafts` previews them
+drafts/

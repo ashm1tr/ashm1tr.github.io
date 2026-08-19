@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Ashmit Rao</title>
+<meta name="description" content="Page not found.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script>
+  // applied before first paint so a pinned theme doesn't flash the other one
+  try {
+    var saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+  } catch (e) {}
+</script>
+<script src="/theme.js" defer></script>
+</head>
+<body>
+<div class="term">
+
+<header>
+  <p class="line line--top"><span><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> cd <span class="req">.</span></span><button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-checked="true" aria-label="dark mode"><span class="track" aria-hidden="true"><span class="knob"></span></span></button></p>
+  <div class="titlebar">
+    <h1>Ashmit Rao</h1>
+    <nav class="nav">
+      <a href="/">home</a>
+      <a href="/reading/">reading</a>
+      <a href="/writing/">writing</a>
+    </nav>
+  </div>
+  <p class="tagline">nothing at this path.</p>
+</header>
+
+<main>
+
+  <section id="notfound">
+    <h2>404</h2>
+    <div class="out">
+      <p>bash: cd: <span class="req">that page</span>: No such file or directory</p>
+      <p class="sub">try</p>
+      <p class="item"><a href="/">home</a></p>
+      <p class="item"><a href="/reading/">reading</a></p>
+      <p class="item"><a href="/writing/">writing</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="line"><span class="ps1"><span class="user">ashmit</span>@<span class="host">web</span>:<span class="path">~</span>$</span> <span class="cursor"></span></p>
+</footer>
+
+</div>
+
+<script>
+  // name the path that was actually asked for; the markup above reads fine
+  // on its own if this never runs
+  try {
+    var p = location.pathname;
+    if (p && p !== "/") {
+      document.querySelectorAll(".req").forEach(function (el) { el.textContent = p; });
+    }
+  } catch (e) {}
+</script>
+
+</body>
+</html>
