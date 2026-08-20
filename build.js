@@ -131,6 +131,11 @@ function nav(current) {
   ).join("\n      ");
 }
 
+// the only visible way to subscribe: the autodiscovery <link> in <head> is
+// invisible to a reader. It rides the writing pages alone, since they are the
+// only ones the feed covers.
+const feedLink = `<a href="/${SITE.seg}/feed.xml">rss</a>`;
+
 function shell({ title, ogTitle, description, canonical, cwd, cmd, heading, meta, body, current, needs }) {
   const head = [];
   if (needs?.katex) head.push('<link rel="stylesheet" href="/assets/katex/katex.min.css">');
@@ -268,6 +273,7 @@ posts.forEach((post, i) => {
     post.updated ? `updated ${human(post.updated)}` : null,
     `${post.minutes} min`,
     post.isDraft ? '<span class="draft-flag">draft</span>' : null,
+    feedLink,
   ].filter(Boolean).join(" · ");
 
   fs.mkdirSync(path.join(OUT, post.slug), { recursive: true });
@@ -311,7 +317,7 @@ fs.writeFileSync(path.join(OUT, "index.html"), shell({
   cwd,
   cmd: "ls -lt",
   heading: SITE.seg,
-  meta: '<p class="tagline">thinking out loud.</p>',
+  meta: `<p class="tagline">thinking out loud. · ${feedLink}</p>`,
   body: `    <div class="out">\n${rows}\n    </div>`,
   current: SITE.seg,
   needs: {},
