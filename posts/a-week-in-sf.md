@@ -14,7 +14,7 @@ Before experiencing it firsthand, I can’t say I was convinced by the usual rhe
 
 While Oxford matches the level of ambition and work ethic that I encountered in SF, these are directed in wildly different places.
 
-Despite there being 5k attendees at Startup School, each one was working on something technical, and interesting. Conversations flowed easily and almost always started with “What are you building?”. From underwater drones to email for AI agents, the ideas on show were insane. Most importantly, people were actually *building*. It is a lot easier with AI to be fair, but I hadn’t ever seen so many people working on something real, rather than mere ideation.
+Despite there being 5k attendees at Startup School, each one was working on something technical and interesting. Conversations flowed easily and almost always started with “What are you building?”. From underwater drones to email for AI agents, the ideas on show were insane. Most importantly, people were actually *building*. It is a lot easier with AI to be fair, but I hadn’t ever seen so many people working on something real, rather than mere ideation.
 
 Only a few times have I been in such an environment at Oxford. I don’t attend many of the entrepreneurship events as they’re not in my areas of interest, which plays a part in this. However, on the whole priorities are heavily skewed towards ranking highly in finals and internships in finance & consulting. These are obviously credible in their own right, but make the contrast with SF particularly stark.
 
