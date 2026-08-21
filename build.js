@@ -560,7 +560,7 @@ fs.writeFileSync(path.join(UNI, "index.html"), shell({
   cwd: uniCwd,
   cmd: "tree",
   heading: "uni",
-  meta: '<p class="tagline">what i am reading for, and what stuck.</p>',
+  meta: `<p class="tagline">what i'm studying!</p>`,
   body: `    <div class="out">\n${uniBody}\n    </div>`,
   current: "uni",
   needs: {},
