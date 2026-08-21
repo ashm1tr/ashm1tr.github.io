@@ -255,12 +255,15 @@ footer .line { margin: 0; }
    column of their own to keep the titles aligned */
 #writing .date { display: inline-block; width: 12ch; margin-right: .9rem; }
 
-.draft-flag {
+.draft-flag,
+.flag {
   margin-left: .6rem;
   color: var(--amber);
 }
-.draft-flag::before { content: "["; }
-.draft-flag::after { content: "]"; }
+.draft-flag::before,
+.flag::before { content: "["; }
+.draft-flag::after,
+.flag::after { content: "]"; }
 
 /* date · reading time under a post title; overrides .tagline's icon layout */
 .post-meta { display: block; }
@@ -422,4 +425,71 @@ footer .line { margin: 0; }
   #writing .date { display: block; width: auto; margin: 0; }
   .postnav { flex-direction: column; gap: .5rem; }
   .postnav .newer { margin-left: 0; text-align: left; }
+}
+
+/* ==========================================================================
+   uni — the module tree, and the flashcards
+   ========================================================================== */
+
+/* both disclosures draw their own marker, the way .nav wears "./" and
+   .item wears ">" — the native triangle is turned off in both engines */
+.tier > summary,
+.card > summary {
+  cursor: pointer;
+  list-style: none;
+}
+.tier > summary::-webkit-details-marker,
+.card > summary::-webkit-details-marker { display: none; }
+
+.tier > summary::before,
+.card > summary::before {
+  content: "+";
+  color: var(--dim);
+  margin-right: .5rem;
+}
+/* a real minus sign, so it keeps the width of the "+" it replaces */
+.tier[open] > summary::before,
+.card[open] > summary::before { content: "\2212"; }
+
+/* year > term > module, each tier stepping in by one bullet width */
+.tier > summary {
+  margin: 1.4rem 0 .35rem;
+  color: var(--amber);
+  text-transform: lowercase;
+}
+.tier:first-child > summary { margin-top: 0; }
+.tier--term { padding-left: calc(1ch + .5rem); }
+.tier--term > summary { margin: .8rem 0 .35rem; }
+.tier--term > .row { padding-left: calc(1ch + .5rem); }
+
+/* the notes / flashcards links sitting under a module's thoughts */
+.out.files { margin-top: 1.5rem; }
+.count { color: var(--dim); }
+
+/* ---- flashcards -------------------------------------------------------- */
+
+/* a card flips with no javascript at all: <details> is the whole mechanism,
+   and the answer stays in the html for anyone reading with scripts off */
+.cards .card { padding: .35rem 0; }
+.cards .card + .card {
+  margin-top: .35rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--rule);
+}
+.card > summary {
+  padding-left: calc(1ch + .5rem);
+  text-indent: calc(-1ch - .5rem);
+}
+.card > summary:hover .q { color: var(--accent); }
+.card .a {
+  margin: .5rem 0 .2rem 0;
+  padding-left: .9rem;
+  border-left: 1px solid var(--rule);
+}
+/* display maths inside a card should not inherit the tight .out spacing */
+.card .a .katex-display { margin: .4rem 0; }
+
+@media (max-width: 34rem) {
+  .tier--term { padding-left: .5rem; }
+  .tier--term > .row { padding-left: 0; }
 }
